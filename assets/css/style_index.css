@@ -1,0 +1,531 @@
+/*Réinitialisation des styles par défaut*/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    font-family: "Poppins", sans-serif;
+    list-style: none;
+    text-decoration: none;
+    scroll-behavior: smooth;
+}
+
+/* Style de l'en-tête (navbar) */
+header {
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 33px 9vw;
+    background: linear-gradient(245.59deg, #0047AB 0%, #0B5AA3 28.53%, #000 75.52%);
+    box-shadow: 0 6px 10px rgb(0, 0, 0);
+}
+
+/*Style du mot "Mission 4" qui est placé tt en haut à gauche*/
+.logo {
+    font-size: 30px;
+    font-weight: 700;
+    color: white;
+}
+
+/*Liens de navigation qu'on peut facilement voir*/
+.navlist {
+    display: flex;
+}
+
+/*Décor des liens*/
+.navlist a {
+    color: white;
+    margin-left: 60px;
+    font-size: 15px;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    transition: all .55s ease;
+}
+
+/*C'est pour l'effet de survol sur les liens de navifations*/
+.navlist a:hover {
+    border-bottom: 2px solid white;
+}
+
+/*ça c'est pour l'icône du menu qd on est sur mobiles*/
+#menu-icon {
+    color: white;
+    font-size: 35px;
+    z-index: 10001;
+    cursor: pointer;
+    display: none;
+    margin-right: 20px; /* Décale le bouton vers la droite */
+}
+
+/*Pour la section principale (le texte, les boutons)*/
+.first {
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(245.59deg, #0047AB 0%, #0B5AA3 28.53%, #000 75.52%);
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 2rem;
+}
+
+/*Valable pour n'importe quel section*/
+section {
+    padding: 0 19%; /*Pour l'espace autour du contenu*/
+}
+
+.fir-text {
+    margin-left: 30px;
+}
+
+.first-text h5 {
+    font-size: 14px;
+    font-weight: 400;
+    color: white;
+    margin-bottom: 40px;
+}
+
+.first-text h1 {
+    font-family: "Permanent Marker", cursive;
+    font-size: 90px;
+    line-height: 1;
+    color: white;
+    margin: 0 0 45px;
+}
+
+.first-text h4 {
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.first-text p {
+    color: white;
+    font-size: 15px;
+    line-height: 1.9;
+    margin-bottom: 40px;
+}
+
+.first-img {
+    border-radius: 50%;
+}
+
+.first-img img {
+    position: relative;
+    top: 3rem;
+    width: 56vw;
+    border-radius: 50%;
+    box-shadow: 0 0 25px white;
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
+}
+
+/*L'effet de survol blanc sur l'image principal*/
+.first-img img:hover {
+    box-shadow: 0 0 50px white, 0 0 100px white;
+}
+
+/*Style pour les deux boutons qui sont dans la section principale*/
+.first-text a {
+    display: inline-block;
+    color: white;
+    background: #0B5AA3;
+    border: 1px solid transparent;
+    padding: 12px 30px;
+    line-height: 1.4;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 30px;
+    text-transform: uppercase;
+    transition: all .55s ease;
+}
+
+/*Effet de survol sur les boutons*/
+.first-text a:hover {
+    background: transparent;
+    border: 1px solid white;
+    transform: translateX(8px);
+}
+
+/*Pour le bouton "Lire plus"*/
+.first-text a.ctaa {
+    background: transparent;
+    border: 1px solid white;
+    margin-left: 20px;
+}
+
+/*Pour l'intérieur du bouton "Lire plus"*/
+.first-text a.ctaa i{
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+/*Toute la partie responsive*/
+@media (max-width: 1535px) {
+    header {
+        padding: 15px 3%;
+        transition: .2s;
+
+    }
+    .icons {
+        padding: 0 3%;
+        transition: .2s;
+    }
+    .scroll-down {
+        right: 3%;
+        transition: .2s;
+    }
+}
+
+@media (max-width: 1460px) {
+    section {
+        padding: 0 12%;
+        transition: .2s;
+    }
+}
+
+@media (max-width: 1340px) {
+    .first-img img {
+        width: 100%;
+        height: auto;
+    }
+    .first-text h1 {
+        font-size: 75px;
+        margin: 0 0 30px;
+    }
+    .first-text h5 {
+        margin-bottom: 25px;
+    }
+}
+
+@media (max-width: 1195px) {
+    section {
+        padding: 0 3%;
+        transition: .2s;
+    }
+    .first-text {
+        padding-top: 115px;
+    }
+    .first-img {
+        text-align: center;
+    }
+    .first-img img {
+        width: 560px;
+        height: auto;
+    }
+    .first {
+        height: 100%;
+        gap: 1rem;
+        grid-template-columns: 1fr;
+    }
+    .icons {
+        display: none;
+    }
+    .scroll-down {
+        display: none;
+    }
+}
+
+@media (max-width: 992px) {
+    #menu-icon {
+        display: block;
+    }
+    .navlist {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 300px;
+        height: auto; /* Ajustement pour le contenu */
+        background: #0B5AA3;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding: 50px 20px;
+        transition: all .55s ease;
+        transform: translateX(100%); /* Cache le menu par défaut */
+        opacity: 0; /* Cache le menu par défaut */
+        visibility: hidden; /* Cache le menu par défaut */
+        box-shadow: -6px 6px 10px rgb(0, 0, 0), 0 -2px 10px rgba(0, 0, 0, 0.2);
+
+    }
+    .navlist a {
+        display: block;
+        margin: 7px 0;
+    }
+    /* Affiche le menu lorsque le checkbox est coché */
+    #menu-toggle:checked + #menu-icon + .navlist {
+        transform: translateX(0);
+        opacity: 1; /* Affiche le menu */
+        visibility: visible; /* Rend le menu visible */
+    }
+}
+
+@media (max-width: 680px) {
+    .first-img img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+
+/* PARTIE ABOUT */
+
+.about{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    background: white;
+    padding: 2rem; /*Pour que ça ne colle pas avec autre section*/
+}
+
+.about li {
+    padding: 1vh;
+}
+
+.about h2 span{
+    color: blue;
+    text-shadow: 0 0 50px blue;
+}
+.about-img{
+    border-radius: 50%;
+}
+.about-img img{
+    width: 30vw;
+    border-radius: 50%;
+    box-shadow: 0 0 25px blue;
+    /* top: 1rem;*/
+    /* cursor: pointer; */
+    transition: 0.4s ease-in-out;
+}
+.about-img img:hover{
+    box-shadow: 0 0 50px blue,
+    0 0 100px blue;
+}
+.heading{
+    text-align: center;
+    font-size: 8rem;
+}
+.about-content h2{
+    text-align: left;
+    line-height: 1.5;
+}
+.about-content h3{
+    font-size: 2rem;
+}
+.about-content p{
+    font-size: 1.4rem;
+    margin: 1.5rem 0 2rem;
+}
+.btn{
+    display: inline-block;
+    padding: 0.6rem 1.5rem;
+    background: blue;
+    border-radius: 4rem;
+    font-size: 1.4rem;
+    color: white;
+    border: 2px solid transparent;
+    letter-spacing: 0.1rem;
+    font-weight: 600;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+}
+.btn:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 25px blue;
+}
+
+
+
+
+
+/*PARTIE RESPONSIVE */
+@media(max-width:895px){
+    .about{
+        flex-direction: column-reverse;
+        gap: 2rem;
+    }
+    .about-content{
+        margin: 0 2rem 4rem;
+        text-align: center;
+    }
+    .about-img img{
+        width: 50vw;
+        margin: 1rem 0;
+        /* margin-bottom: 3rem; */
+    }
+    .heading {
+        font-size: 3rem;
+    }
+    .about-content h2{
+        font-size: 2.4rem;
+    }
+    .about-content h3{
+        font-size: 1.8rem;
+    }
+    .about-content p {
+        font-size: 1.2rem;
+    }
+    .btn {
+        padding: 0.5rem 1.2rem;
+        font-size: 1.2rem;
+    }
+}
+
+
+
+/* CSS PARTIE PROJETS */
+
+#projects{
+    background: linear-gradient(245.59deg, #0047AB 0%, #0B5AA3 28.53%, #000 75.52%);
+}
+
+.projets{
+    font-family: "Permanent Marker", cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+}
+
+.projets h1{
+    font-size: 3em;
+    margin: 25px 0;
+    text-align: center;
+    font-weight: 600;
+    color: whitesmoke;
+}
+
+.box-content{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 1000px;
+    margin-top: 30px;
+}
+
+.carte{
+    min-height: 220px;
+    width: 320px;
+    padding: 30px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #fff;
+    margin: 10px 4px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+.carte i{
+    margin: 20px;
+    color: #0047AB; /*Couleur des p'tits emoticons*/
+}
+
+.carte h2{
+    margin-bottom: 12px;
+    font-weight: 400;
+    text-align: center;
+    color: #6c757d;
+}
+
+.carte p{
+    color: #6c757d;
+    text-align: center;
+}
+
+.carte:hover{}
+.carte:hover i,
+.carte:hover p{
+    color: #fff;
+}
+.carte:hover h2{
+    font-weight: 600;
+    color: #f2f2f2;
+}
+
+/*Pour faire apparaitre images qd met souris sur box*/
+.carte:nth-child(1):hover, .carte:nth-child(2):hover, .carte:nth-child(3):hover{
+    background: linear-gradient(45deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.4) 100%);
+    background-size: cover;
+}
+
+/* RESPONSIVE ABOUT */
+@media (max-width: 991px) {
+    .projets{
+        padding: 25px;
+    }
+    .projets h1{
+        font-size: 2.5em;
+        font-weight: 600;
+    }
+    .box-content{
+        flex-direction: column;
+        width: 100%;
+    }
+    .carte{
+        min-width: 300px;
+        margin: 10px auto;
+    }
+}
+
+
+
+/* PARTIE FOOTER */
+
+.footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    padding: 40px 0;
+    background-color: black;
+}
+
+.footer .social {
+    text-align: center;
+    padding-bottom: 25px;
+    color: white;
+}
+
+.footer .social a {
+    font-size: 25px;
+    color: white;
+    border: 2px solid black;
+    width: 42px;
+    height: 42px;
+    line-height: 42px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    margin: 0 10px;
+    transition: 0.3s ease-in-out;
+}
+
+.footer .social a:hover {
+    transform: scale(1.2) translateY(-10px);
+    background-color: black;
+    color: white;
+    box-shadow: 0 0 25px white;
+}
+
+.footer .copyright {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 16px;
+    color: white;
+}
+
+.footer .copyright a:hover {
+    border-bottom: 2px solid white;
+}

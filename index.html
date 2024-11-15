@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mission 4</title>
+  <link href="assets/css/style_index.css" rel="stylesheet">
+
+  <!-- Lien du Boxicons -->
+  <!--J'ai importé cette bibliothèque pour pouvoir avoir l'icône du menu(qd on est sur téléphone plutôt que d'avoir une image de menu-->
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+  <!-- Lien du remixicons -->
+  <!--J'ai importé cette bibli pour avoir la flèche à côté de "Lire plus"-->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+
+  <!-- Lien des Google Fonts -->
+  <!--ça c'est pour les  différentes polices d'écriture-->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!--Dans le "header" on va s'occuper de la navbar-->
+<header>
+  <a href="#accueil" class="logo">KDou</a>
+
+  <!-- Ajout d'un input checkbox -->
+  <!--C'est un checkbox caché pour gérer l'affichage du menu en version mobile-->
+  <input type="checkbox" id="menu-toggle" style="display: none;">
+  <label for="menu-toggle" class="bx bx-menu" id="menu-icon"></label>
+
+  <!--Liste de navigation qu'on peut facilement voir-->
+  <ul class="navlist">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="mission_1.html">Mission 1</a></li>
+    <li><a href="mission_2.html">Mission 2</a></li>
+    <li><a href="mission_3.html">Mission 3</a></li>
+    <li><a href="conclusion.html">Conclusion</a></li>
+  </ul>
+</header>
+
+<!--Ici, c'est la section principale-->
+<section class="first" id="accueil">
+  <div class="first-text">
+    <h4>Do it...</h4>
+    <h1>Rapport</h1>
+    <p>SAE en bases de données</p>
+    <!--Boutons-->
+    <a href="#contact">Contactez-nous</a>
+    <a href="#about" class="ctaa"><i class="ri-play-fill"></i>Lire plus</a>
+  </div>
+  <!-- Pour afficher la grosse image de la section -->
+  <div class="first-img">
+    <img src="assets/img/intro_index.jpg" alt="image d'illustration">
+  </div>
+  <br><br><br><br>
+</section>
+
+
+<!--SECTION A PROPOS-->
+<section class="about" id="about">
+  <div class="about-content">
+    <h2 class="heading">About<span>Us</span></h2>
+    <h3 class="text-animation">
+      <span></span>
+    </h3>
+    <p>Notre équipe est composé de trois étudiants :
+      <ul>
+        <li><strong> François-Xavier - Rédacteur en chef </strong><br>
+          - Responsable de la présentation du compte rendu <br>
+          - Structure les informations du projet <br>
+          - Prise en compte de notre travail sur les missions précédentes
+        </li>
+        <li><strong> Amina - Directrice Artistique </strong> <br>
+          - Assemblage final du site <br>
+          - Cohérence visuelle <br>
+          - Application des normes de style.
+        </li>
+        <li><strong> Inès - Conceptrice visuel </strong><br>
+          - Mise en page compte-rendu <br>
+          - Présentation visuelle pages des Missions - Cohérence de style <br>
+        </li>
+      </ul>
+    <a href="#projects" class="btn">Découvrir les missions</a>
+  </div>
+  <div class="about-img">
+    <img src="assets/img/equipe_index.png" alt="image d'illustration">
+  </div>
+</section>
+
+
+
+<!-- Section de la page PROJETS -->
+<section id="projects">
+  <div class="projets">
+    <h1>Le but de notre mission</h1>
+    <p>Voici ici, une présentation de toutes nos missions</p>
+
+    <div class="box-content">
+      <div class="carte">
+        <i class="ri-database-line"></i>
+        <h2>Mission 1</h2>
+        <p>Le but de la mission c'était de se familiariser avec la Base De Données de Kdou ainsi que son utilisation et vérifier la cohérence des informations.</p>
+      </div>
+
+      <div class="carte">
+        <i class='bx bxs-data'></i>
+        <h2>Mission 2</h2>
+        <p>Le but de la mission est de commencer à exploiter la base de données de l'entreprise KDou pour produire des analyses et indicateurs pertinents</p>
+      </div>
+
+      <div class="carte">
+        <i class="ri-mac-fill"></i>
+        <h2>Mission 3</h2>
+        <p>Le but de la mission c'est d’exploiter la base de données de l’entreprise KDou pour produire des analyses et indicateurs pertinents</p>
+      </div>
+    </div>
+    <br><br><br><br>
+    <br><br>
+  </div>
+</section>
+
+
+  <!--PARTIE FOOTER-->
+
+  <footer class="footer" id="contact">
+    <div class="social">
+      <a href="mailto:ines.ladjenef@etu.u-paris.fr"><i class="ri-mail-unread-fill"></i></a>
+      <a href="mailto:amina.outtaleb@etu.u-paris.fr" target="blank"><i class="ri-mail-open-fill"></i></a>
+      <a href="mailto:fancois-xavier.de-beketch@etu.u-paris.fr" target="blank"><i class="ri-mail-send-fill"></i></a>
+    </div>
+    <p class="copyright">
+      Site web réalisé par
+      <a href="https://github.com/AminaStudent" target="_blank" style="color: white;">
+        <u>Amina</u></a>,
+
+      <a href="https://github.com/in3sl4d" target="_blank" style="color: white;">
+        <u>Inès</u></a>  et
+
+      <a href="https://github.com/Artenka76" target="_blank" style="color: white;">
+        <u>François-Xavier</u> </a>
+
+    </p>
+  </footer>
+
+
+
+
+</body>
+</html>

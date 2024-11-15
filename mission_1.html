@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mission 1</title>
+  <link href="assets/css/style_M1_M2_Conclusion.css" rel="stylesheet">
+
+  <!-- Lien du Boxicons -->
+  <!--J'ai importé cette bibliothèque pour pouvoir avoir l'icône du menu(qd on est sur téléphone plutôt que d'avoir une image de menu-->
+  <link rel="stylesheet"
+        href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+  <!-- Lien du remixicons -->
+  <!--J'ai importé cette bibli pour avoir la flèche à côté de "Lire plus"-->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+
+  <!-- Lien des Google Fonts -->
+  <!--ça c'est pour les  différentes polices d'écriture-->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!--Dans le "header" on va s'occuper de la navbar-->
+  <header>
+    <a href="index.html" class="logo">KDou</a>
+
+    <!-- Ajout d'un input checkbox -->
+    <!--C'est un checkbox caché pour gérer l'affichage du menu en version mobile-->
+    <input type="checkbox" id="menu-toggle" style="display: none;">
+    <label for="menu-toggle" class="bx bx-menu" id="menu-icon"></label>
+
+    <!--Liste de navigation qu'on peut facilement voir-->
+    <ul class="navlist">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="mission_1.html">Mission 1</a></li>
+      <li><a href="mission_2.html">Mission 2</a></li>
+      <li><a href="mission_3.html">Mission 3</a></li>
+      <li><a href="conclusion.html">Conclusion</a></li>
+    </ul>
+  </header>
+  <!--Le contenu principal de la page-->
+  <article>
+    <h1 id="titre">Mission 1</h1>
+    <!--La première partie de la page-->
+    <section class="box4">
+      <p>KDou, une entreprise commerciale vendant à ses clients, tous français, des denrées alimentaires venues du monde entier, a fait appel à notre équipe afin de l'aider à prendre en charge l'évolution de son organisation et de son positionnement. Le but de KDou est de mieux se positionner par rapport à ses concurrents et d'explorer le marché des produits éco responsables pouvant être vendus plus chère.</p>
+    </section>
+    <!--La deuxième partie de la page-->
+    <section class="box1">
+      <p>Dans le cadre de notre première mission, il nous a été fourni un classeur Excel pour nous permettre de nous familiariser avec l'organisation de la base de données de KDou dont voici l'organisation :</p>
+      <table>
+        <thead>
+        <tr>
+          <th scope="col">Table</th>
+          <th scope="col">Clé primaire</th>
+          <th scope="col">Clé secondaire</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row">Fournisseur</th>
+          <td>N°Fournisseur</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th scope="row">Produit</th>
+          <td>Réf Produit</td>
+          <td>N° Fournisseur, Code Catégorie</td>
+        </tr>
+        <tr>
+          <th scope="row">Catégorie</th>
+          <td>Code Catégorie</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th scope="row">Clientèle</th>
+          <td>Code Client</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th scope="row">Commande</th>
+          <td>N° Commande</td>
+          <td>Code Client</td>
+        </tr>
+        <tr>
+          <th scope="row">DetailCommande</th>
+          <td>Réf Produit + N° Commande</td>
+          <td>Réf Produit, N° Commande</td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+    <!--La troisième partie de la page-->
+    <section class="box3">
+      <p>Le premier indicateur que nous avons isolé est le prix moyen des produits proposés par KDou. Cet indicateur permet en partie de déterminer la clientèle cible de KDou. Un prix moyen élevé indiquerais que la clientèle cible de KDou est plutôt </p>
+      <img src="assets/img/capture_table_fournisseur.png" alt="extrait de la table 'fournisseur'">
+    </section>
+    <!--La quatrième partie de la page-->
+    <section class="box4">
+      <p>Une autre chose révélée par cette exemple est l'état déplorable de la base de donnée de KDou. Rien que dans l'extrait montré ci-dessus on peut déjà remarquer 3 erreurs, dont la plus courrante sur toute la base de donnée, des localisation dont le nom est écrit de plusieurs façon. Dans cet exemple, Les Etats-Unis sont identifiés en tant que "Etats-Unis", "Etat Unis" et "USA". Ce genre d'erreur rend l'obtention de données simples comme le nombre de founisseurs nord Americain difficile, et toute la base de donnée de KDou en est criblée.</p>
+    </section>
+  </article>
+  <!--Les crédits du site et indique la fin de la page-->
+  <footer class="footer" id="contact">
+    <div class="social">
+      <a href="mailto:ines.ladjenef@etu.u-paris.fr"><i class="ri-mail-unread-fill"></i></a>
+      <a href="mailto:amina.outtaleb@etu.u-paris.fr" target="blank"><i class="ri-mail-open-fill"></i></a>
+      <a href="mailto:fancois-xavier.de-beketch@etu.u-paris.fr" target="blank"><i class="ri-mail-send-fill"></i></a>
+    </div>
+    <p class="copyright">
+      Site web réalisé par
+      <a href="https://github.com/AminaStudent" target="_blank" style="color: white;">
+        <u>Amina</u></a>,
+
+      <a href="https://github.com/in3sl4d" target="_blank" style="color: white;">
+        <u>Inès</u></a>  et
+
+      <a href="https://github.com/Artenka76" target="_blank" style="color: white;">
+        <u>François-Xavier</u> </a>
+
+    </p>
+  </footer>
+</body>
+</html>

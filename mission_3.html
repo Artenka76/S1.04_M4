@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mission 2</title>
+  <link href="assets/css/style_M1_M2_Conclusion.css" rel="stylesheet">
+
+  <!-- Lien du Boxicons -->
+  <!--J'ai importé cette bibliothèque pour pouvoir avoir l'icône du menu(qd on est sur téléphone plutôt que d'avoir une image de menu-->
+  <link rel="stylesheet"
+        href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+  <!-- Lien du remixicons -->
+  <!--J'ai importé cette bibli pour avoir la flèche à côté de "Lire plus"-->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+
+  <!-- Lien des Google Fonts -->
+  <!--ça c'est pour les  différentes polices d'écriture-->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!--Dans le "header" on va s'occuper de la navbar-->
+<header>
+  <a href="index.html" class="logo">KDou</a>
+
+  <!-- Ajout d'un input checkbox -->
+  <!--C'est un checkbox caché pour gérer l'affichage du menu en version mobile-->
+  <input type="checkbox" id="menu-toggle" style="display: none;">
+  <label for="menu-toggle" class="bx bx-menu" id="menu-icon"></label>
+
+  <!--Liste de navigation qu'on peut facilement voir-->
+  <ul class="navlist">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="mission_1.html">Mission 1</a></li>
+    <li><a href="mission_2.html">Mission 2</a></li>
+    <li><a href="mission_3.html">Mission 3</a></li>
+    <li><a href="conclusion.html">Conclusion</a></li>
+  </ul>
+</header>
+
+<article>
+  <h1 id="sous-titre">Mission 3</h1>
+  <section class="box4">
+    <p>KDou est une entreprise française qui s'intéresse maintenant à ses produits les plus vendus selon la catégorie, le fournisseur... </p>
+  </section>
+
+  <hr/>
+
+  <section class="box1">
+    <p>Pour mener à bien cette mission, KDou nous a fourni la base de données recensant tous les produits, commandes, catégories...
+      vous pouvez trouvez le schéma relationnel.</p>
+    <img src="assets/img/base_donnees.png" alt="Relation de la base de données" >
+  </section>
+
+  <hr/>
+
+  <section class="box3">
+
+    <h2> 1. Desserts et boissons</h2>
+    <p> Deux indicateurs permanents pour les produits de la catégorie boissons et dessert sont :</p>
+    <ol>
+      <li class="indic"> Les pays de provenance des catégories desserts et boissons  </li>
+      <li class="indic"> Le chiffre d'affaire généré par catégorie desserts ou catégorie boissons. </li>
+    </ol>
+    <ul class="util">
+      <li>Le premier indicateur nous permettra de savoir d'où viennent principalements les desserts et boissons.</li>
+      <li>Le deuxième indicateur permettra d'afficher le chiffre d'affaire de KDou généré par catégorie desserts ou boissons. </li>
+    </ul>
+
+    <h3> Construction des requêtes</h3>
+
+    <ul class="util">
+      <li>Pour obtenir les pays de provenances des catégories boissons et desserts, nous devrons prendre,
+        en joignant les tables Catégorie, Produit et Fournisseur qui ont un code catégorie qui correspond
+        à celui des desserts ou des boissons.</li>
+      <li>Pour obtenir le chiffre d'affaires, nous devrons d'abord calculer le chiffre d'affaires des desserts
+        puis le chiffre d'affaires des boissons en faisant : Prix du produit * quantité pour chaque article
+        commandé. </li>
+    </ul>
+
+    <h3> Requêtes SQL</h3>
+
+    <pre>
+        <code>
+SELECT DISTINCT
+     C.NomCateg, F.Pays
+FROM
+     (Produit AS P INNER JOIN Categorie AS C ON P.CodeCateg =
+     C.CodeCateg) INNER JOIN Fournisseur AS F ON P.NoFour = F.NoFour
+WHERE
+     C.NomCateg = 'Boissons' OR C.NomCateg = 'Desserts';
+        </code>
+      </pre>
+
+    <pre>
+        <code>
+SELECT
+     CA_B.CA_Boissons, CA_D.CA_Desserts
+FROM
+    (SELECT
+          SUM(DC.PrixUnitCli * DC.QteCom) AS CA_Boissons
+     FROM
+          (Categorie C INNER JOIN Produit P ON C.CodeCateg = P.CodeCateg)
+          INNER JOIN DetailCommande DC ON P.RefProd = DC.RefProd
+     WHERE
+          C.NomCateg='Boissons') CA_B,
+    (SELECT
+          SUM(DC.PrixUnitCli * DC.QteCom) AS CA_Desserts
+     FROM
+          (Categorie C INNER JOIN Produit P ON C.CodeCateg = P.CodeCateg)
+          INNER JOIN DetailCommande DC ON P.RefProd = DC.RefProd
+     WHERE
+          C.NomCateg='Desserts') CA_D;
+        </code>
+      </pre>
+
+
+    <h3> Résultats </h3>
+    <img src="">
+    <img src="">
+  </section>
+
+  <hr/>
+
+  <section class="box3">
+    <h2> 2. L'offre de KDou </h2>
+    <p> Deux indicateurs permanents pour l'offre de KDou sont :</p>
+    <ol>
+      <li class="indic"> Le nombre de produits non commandés par catégorie</li>
+      <li class="indic"> Pays avec une offre importante de produit </li>
+    </ol>
+    <ul class="util">
+      <li>Le premier indicateur nous permettra de savoir le nombre de produits non commandés par catégorie.</li>
+      <li>Le deuxième indicateur permettra de s'intéresser aux pays avec une offre importante de produit. </li>
+    </ul>
+
+    <h3> Construction des requêtes</h3>
+
+    <ul class="util">
+      <li>Pour obtenir le nombre de produits non commandés, on doit sélectionner toutes les références
+        produits qui ne sont pas présents dans la table Commande à l'aide d'une différence (on retire
+        tous les articles déjà commandés pour ne garder que ceux qui n'ont jamais été commandés).</li>
+      <li>Pour obtenir les pays et leur nombre d'offres de produits, on sélectionne tous les articles
+        de chaque pays, puis on trie les résultats par ordre décroissant (on veut le pays avec le plus
+        de produits). </li>
+    </ul>
+
+    <h3> Requêtes SQL</h3>
+
+    <pre>
+        <code>
+SELECT DISTINCT
+     PNC.NomCateg, COUNT(PNC.RefProd) AS Nbr_Produits
+FROM
+     (SELECT DISTINCT
+           P.RefProd, C.NomCateg
+      FROM
+           Produit P INNER JOIN Categorie C ON P.CodeCateg = C.CodeCateg
+      WHERE
+           P.RefProd NOT IN
+                (SELECT
+                      DC.RefProd
+                 FROM
+                      DetailCommande DC)
+     ) PNC
+GROUP BY
+     PNC.NomCateg;
+        </code>
+      </pre>
+
+    <pre>
+        <code>
+SELECT DISTINCT TOP 5
+     F.Pays, COUNT(P.RefProd)
+FROM
+     Produit P INNER JOIN Fournisseur F ON P.NoFour = F.NoFour
+GROUP BY
+     F.Pays
+ORDER BY
+     2 DESC;
+        </code>
+      </pre>
+
+    <h3> Résultats </h3>
+    <img src="">
+    <img src="">
+
+
+  </section>
+
+  <hr/>
+
+  <section class="box3">
+
+    <h3> 3. Provenance des produits </h3>
+    <p> Deux indicateurs permanents pour connaître la provenance des produits sont :</p>
+    <ol>
+      <li class="indic"> Les fournisseurs qui vendent uniquement des boissons ou desserts </li>
+      <li class="indic"> Les fournisseurs qui vendent les deux </li>
+    </ol>
+    <ul class="util">
+      <li>Le premier indicateur nous permettra de connaître les fournisseurs qui vendent uniquement des boissons et desserts.</li>
+      <li>Le deuxième indicateur permettra d'afficher les fournisseurs qui vendent des desserts et boissons (et d'autres produits). </li>
+    </ul>
+
+    <h3> Construction des requêtes</h3>
+
+    <ul class="util">
+      <li>Pour obtenir les noms des fournisseurs qui ne vendent que des boissons
+        ou des desserts, on va sélectionner tous les pays qui vendent toutes les entreprises
+        qui ne vendent aucun desserts ou boissons et faire la différence sur la table Fournisseur
+        pour ne garder que les fournisseurs qui ne vendent que des desserts ou boissons.</li>
+      <li>Pour obtenir la liste des fournisseurs vendant des boissons et des desserts, on
+        doit dans un premier temps sélectionner tous les fournisseurs qui vendent des desserts puis
+        tout ceux qui vendent des desserts et joindre les résultats pour ne garder que les fournisseurs
+        qui vendent des desserts et boissons. </li>
+    </ul>
+
+    <h3> Requêtes SQL</h3>
+
+    <pre>
+        <code>
+SELECT DISTINCT
+     F.NoFour, F.Societe, F.Contact
+FROM
+     Fournisseur F
+WHERE
+     F.NoFour NOT IN
+          (SELECT DISTINCT
+                P.NoFour
+           FROM
+                Produit P INNER JOIN Categorie C ON P.CodeCateg = C.CodeCateg
+           WHERE
+                C.NomCateg <> 'Boissons' AND C.NomCateg <> 'Desserts');
+        </code>
+      </pre>
+
+    <pre>
+        <code>
+SELECT DISTINCT
+     F.NoFour, F.Societe, F.Contact
+FROM
+     ((SELECT
+            P.NoFour
+       FROM
+            Produit P INNER JOIN Categorie C ON P.CodeCateg = C.CodeCateg
+       WHERE C.NomCateg = 'Boissons') Pb
+      INNER JOIN
+      (SELECT
+            P.NoFour
+       FROM
+            Produit P INNER JOIN Categorie C ON P.CodeCateg = C.CodeCateg
+       WHERE C.NomCateg = 'Desserts') Pd
+      ON Pb.NoFour = Pd.NoFour) INNER JOIN Fournisseur F ON Pb.NoFour =
+     F.NoFour;
+        </code>
+      </pre>
+
+    <h3> Résultats </h3>
+    <img src="">
+    <img src="">
+
+  </section>
+
+  <hr/>
+
+  <section class="box3">
+
+    <h2> 4. La clientèle </h2>
+    <p> Deux indicateurs permanents pour l'étude de sa clientèle sont :</p>
+    <ol>
+      <li class="indic"> Les clients nantais qui achètent des produits d'Allemagne </li>
+      <li class="indic"> Les produits avec que des remises de 10% ou 20% ou aucune remise </li>
+    </ol>
+    <ul class="util">
+      <li>Le premier indicateur nous permettra de savoir quels sont les clients nantais qui achètent des produits
+        d'Allemagne.</li>
+      <li>Le deuxième indicateur permettra d'afficher les produits avec que des remises de 10%, 20% ou aucune. </li>
+    </ul>
+
+    <h3> Construction des requêtes</h3>
+
+    <ul class="util">
+      <li>Pour obtenir les clients nantais qui achètent des produits d'Allemagne, on sélectionne
+        tous les clients venant de Nantes (en excluant "Verre à soi") et
+        leur contact, qui doit être un fournisseur allemand. .</li>
+      <li>Pour obtenir tous les produits qui ont uniquement béneficé de remises de 10% ou 20%, on sélectionne
+        tous les produits qui ont eu des remises différentes de 10% (donc 0.1), de 20%
+        (0.2) ou aucune (0) que l'on soustrait à la table Produits pour ne renvoyer que les produits qui ont
+        bénéficier de remises de 10%, 20% ou aucune. </li>
+    </ul>
+
+    <h3> Requêtes SQL</h3>
+
+    <pre>
+        <code>
+SELECT DISTINCT
+     C.CodeCli, C.SocieteCli, C.ContactCli
+FROM
+     ((((SELECT
+               Client.*
+          FROM
+               Client
+          WHERE
+               Client.VilleCli = 'Nantes' AND Client.SocieteCLI <>
+               'Verre à soi') C
+        INNER JOIN Commande Co ON C.CodeCli = Co.CodeCli) INNER JOIN
+        DetailCommande DC ON Co.NoCom = DC.NoCom) INNER JOIN Produit P
+        ON DC.RefProd = P.RefProd) INNER JOIN
+     (SELECT
+           Fournisseur.NoFour
+      FROM
+           Fournisseur
+      WHERE
+           Fournisseur.Pays = 'Allemagne') F ON P.NoFour = F.NoFour;
+        </code>
+      </pre>
+
+    <pre>
+        <code>
+SELECT DISTINCT
+     P.RefProd, P.NomProd
+FROM
+     Produit P
+WHERE
+     P.RefProd NOT IN
+     (SELECT DISTINCT
+           DC.RefProd
+      FROM
+           DetailCommande DC
+      WHERE DC.Remise <> 0.2 AND DC.Remise <> 0.1 AND DC.Remise <> 0);
+
+        </code>
+      </pre>
+
+    <h3> Résultats </h3>
+    <img src="">
+    <img src="">
+
+  </section>
+
+  <hr/>
+
+  <section class="box4">
+  </section>
+</article>
+
+<footer class="footer" id="contact">
+
+  <div class="social">
+
+    <a href="mailto:ines.ladjenef@etu.u-paris.fr"><i class="ri-mail-unread-fill"></i></a>
+    <a href="mailto:amina.outtaleb@etu.u-paris.fr" target="blank"><i class="ri-mail-open-fill"></i></a>
+    <a href="mailto:fancois-xavier.de-beketch@etu.u-paris.fr" target="blank"><i class="ri-mail-send-fill"></i></a>
+
+  </div>
+
+  <p class="copyright">
+    Site web réalisé par
+    <a href="https://github.com/AminaStudent" target="_blank" style="color: white;">
+      <u>Amina</u></a>,
+
+    <a href="https://github.com/in3sl4d" target="_blank" style="color: white;">
+      <u>Inès</u></a> et
+
+    <a href="https://github.com/Artenka76" target="_blank" style="color: white;">
+      <u>François-Xavier</u> </a>
+
+  </p>
+</footer>
+</body>
+</html>

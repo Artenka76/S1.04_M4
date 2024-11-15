@@ -1,0 +1,315 @@
+/*Réinitialisation des styles par défaut*/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    font-family: "Poppins", sans-serif;
+    list-style: none;
+    text-decoration: none;
+    scroll-behavior: smooth;
+}
+
+/* Style de l'en-tête (navbar) */
+header {
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 33px 9vw;
+    background: transparent;
+    background: linear-gradient(245.59deg, #0047AB 0%, #0B5AA3 28.53%, #000 75.52%);
+}
+
+/*Style du mot "Mission 4" qui est placé tt en haut à gauche*/
+.logo {
+    font-size: 30px;
+    font-weight: 700;
+    color: white;
+}
+
+/*Liens de navigation qu'on peut facilement voir*/
+.navlist {
+    display: flex;
+}
+
+/*Décor des liens*/
+.navlist a {
+    color: white;
+    margin-left: 60px;
+    font-size: 15px;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    transition: all .55s ease;
+}
+
+/*C'est pour l'effet de survol sur les liens de navifations*/
+.navlist a:hover {
+    border-bottom: 2px solid white;
+}
+
+/*ça c'est pour l'icône du menu qd on est sur mobiles*/
+#menu-icon {
+    color: white;
+    font-size: 35px;
+    z-index: 10001;
+    cursor: pointer;
+    display: none;
+    margin-right: 20px; /* Décale le bouton vers la droite */
+}
+
+/*Titre au début de la page*/
+#titre {
+    text-align: center;
+    margin-top: 170px;
+    padding-bottom: 2vh;
+}
+
+/*L'ensemble des styles s'appliquant aux tableaux*/
+table{
+    border-collapse: collapse;
+    border: 2px solid;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+thead{
+    background-color: rgb(228 240 245);
+}
+
+th, td{
+    border: 1px solid;
+    padding: 8px 10px;
+}
+
+tbody > tr:nth-of-type(even){
+    background-color: rgb(237 238 242);
+}
+
+tbody th{
+    font-weight: normal;
+}
+table tr > td:first-of-type {
+    font-weight: bold;
+}
+
+table tr > td:last-of-type {
+    font-style: italic;
+}
+
+/*L'espacement entre les articles*/
+article > p, article > section{
+    padding-bottom: 7vh;
+}
+
+/*Création de 5 classes permettant de facilement construire une page grâce à des éléments que l'on peut combiner*/
+.box1,.box2,.box3 {
+    position : relative;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box1 {
+    flex-direction: row;
+}
+
+.box2 {
+    flex-direction: row-reverse;
+}
+
+.box3 {
+    flex-direction: column;
+}
+
+.box4{
+    text-align: center;
+    padding-top: 5vh;
+    padding-right: 4vw;
+    padding-left: 4vw;
+}
+
+.box5 {
+    position : relative;
+    display : flex;
+    margin-top: 2vh;
+}
+
+.box1 > p,.box2 > p, .box1 > .box3, .box2 > .box3{
+    width: 65%;
+}
+
+.box1 > p{
+    padding-right: 5%;
+}
+
+.box2 > p{
+    padding-left: 5%;
+}
+
+.box3 > p{
+    text-align: center;
+    padding-right: 4vw;
+    padding-left: 4vw;
+    padding-bottom: 1vw;
+
+}
+
+.box1 > img,.box2 > img,.box1 > table,.box2 > table{
+    width: 25%;
+}
+
+.box3 > img,.box3 > table{
+    width: 80%;
+}
+
+.box1 > figure, .box2 > figure, .box3 > figure{
+    position : relative;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 2vh;
+
+}
+
+.box1 > figure:last-of-type, .box2 > figure:last-of-type, .box3 > figure:last-of-type{
+    padding-bottom:0;
+}
+
+.box1 > figure > img, .box2 > figure > img, .box3 > figure > img{
+    padding-bottom: 1vh;
+}
+
+/*La ligne horizontale permettant une rupture entre deux parties d'une page*/
+hr {
+    border: none;
+    border-top: 3px double #333;
+    color: #333;
+    overflow: visible;
+    text-align: center;
+    height: 5px;
+}
+
+/*Toute la partie responsive*/
+@media (max-width: 1230px) {
+    header {
+        padding: 15px 3%;
+    }
+    .icons {
+        padding: 0 3%;
+    }
+    .scroll-down {
+        right: 3%;
+    }
+    section {
+        margin-top: 80px;
+    }
+    #titre {
+        text-align: center;
+        margin-top: 120px;
+    }
+    .box1,.box2 {
+        flex-direction: column;
+
+    }
+    .box1 p,.box2 p{
+        width: 90%;
+        padding-right: 0;
+        padding-left: 0;
+        padding-bottom: 5vh;
+        text-align: center;
+    }
+    .box3 img{
+        width: 90%;
+    }
+}
+
+@media (max-width: 992px) {
+    #menu-icon {
+        display: block;
+    }
+
+    .navlist {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 300px;
+        height: auto; /* Ajustement pour le contenu */
+        background: #0B5AA3;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding: 50px 20px;
+        transition: all .55s ease;
+        transform: translateX(100%); /* Cache le menu par défaut */
+        opacity: 0; /* Cache le menu par défaut */
+        visibility: hidden; /* Cache le menu par défaut */
+        box-shadow: -6px 6px 10px rgb(0, 0, 0), 0 -2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .navlist a {
+        display: block;
+        margin: 7px 0;
+    }
+
+    /* Affiche le menu lorsque le checkbox est coché */
+    #menu-toggle:checked + #menu-icon + .navlist {
+        transform: translateX(0);
+        opacity: 1; /* Affiche le menu */
+        visibility: visible; /* Rend le menu visible */
+    }
+}
+
+/* PARTIE FOOTER */
+
+.footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    padding: 40px 0;
+    background-color: black;
+}
+
+.footer .social {
+    text-align: center;
+    padding-bottom: 25px;
+    color: white;
+}
+
+.footer .social a {
+    font-size: 25px;
+    color: white;
+    border: 2px solid black;
+    width: 42px;
+    height: 42px;
+    line-height: 42px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    margin: 0 10px;
+    transition: 0.3s ease-in-out;
+}
+
+.footer .social a:hover {
+    transform: scale(1.2) translateY(-10px);
+    background-color: black;
+    color: white;
+    box-shadow: 0 0 25px white;
+}
+
+.footer .copyright {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 16px;
+    color: white;
+}
+
+.footer .copyright a:hover {
+    border-bottom: 2px solid white;
+}
